@@ -1,0 +1,29 @@
+/**
+  * Permission is hereby granted, free of charge, to any person obtaining a copy of this
+  * software and associated documentation files (the "Software"), to deal in the Software
+  * without restriction, including without limitation the rights to use, copy, modify,
+  * merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+  * permit persons to whom the Software is furnished to do so.
+  *
+  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+  * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+  * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+  * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  */
+
+#include "resource.h"
+#include "windows.h"
+
+1  RT_MANIFEST "GZDoomUpdater.manifest.xml"
+
+IDD_DIALOG1 DIALOGEX 0, 0, 250, 65
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_VISIBLE
+CAPTION "Downloading"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON "Cancel",IDCANCEL,100, 40, 50, 20 
+    CONTROL "", IDC_PROGRESS1, "msctls_progress32", WS_CHILD | WS_VISIBLE, 5, 5, 240, 20 
+    CONTROL "0b / 0b (0.00%)", IDC_LABEL1, 0x82 /* STATIC -- workaround for windres bug */ , SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 25, 30, 200, 8 
+END
