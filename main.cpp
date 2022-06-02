@@ -141,9 +141,12 @@ static VersionTriplet getLatestVersion(){
         curl_easy_setopt(curl,CURLOPT_ACCEPT_ENCODING,"application/vnd.github.v3+json");
         curl_easy_setopt(curl,CURLOPT_NOPROGRESS,0L);
         
+        curl_easy_setopt(curl,CURLOPT_SSL_OPTIONS,CURLSSLOPT_NATIVE_CA);
+        
         curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION,1L);
         
-        if(curl_easy_perform(curl)!=CURLE_OK){
+        int err = curl_easy_perform(curl);
+        if(err != CURLE_OK){
             //curl_easy_perform failed -- no internet?
             return (VersionTriplet){0,0,0};
         }
@@ -336,6 +339,8 @@ static void downloaderThreadProc(){
         curl_easy_setopt(curl,CURLOPT_FOLLOWLOCATION,1L);
         
         curl_easy_setopt(curl,CURLOPT_MAXREDIRS,50L);
+        
+        curl_easy_setopt(curl,CURLOPT_SSL_OPTIONS,CURLSSLOPT_NATIVE_CA);
         
         int err=curl_easy_perform(curl);
         
