@@ -539,7 +539,7 @@ static void updateGZDoom(HINSTANCE hInst){
         for(const JSON::Element &asset_e:assets){
             const JSON::object_t &asset=asset_e.get_obj();
             const std::string &name=asset.at("name").get_str();
-            if((name.find("Windows")!=std::string::npos)&&(name.find("64bit")!=std::string::npos)){
+            if((name.find("Windows")!=std::string::npos)&&(name.find("64bit")!=std::string::npos)&&(name.find(".zip")!=std::string::npos)){
                 found=true;
                 gzdoom_download_url=asset.at("browser_download_url").get_str();
                 break;
