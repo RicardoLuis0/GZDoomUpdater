@@ -92,7 +92,7 @@ namespace JSON {
             inline double& get_double(){ return is_double()?std::get<double>(data):throw JSON_Exception("Double",type_name()); }
             inline const double& get_double() const { return is_double()?std::get<double>(data):throw JSON_Exception("Double",type_name()); }
             
-            inline int get_number_int() const { return is_double()?static_cast<int64_t>(std::get<double>(data)):is_int()?std::get<int64_t>(data):throw JSON_Exception("Number",type_name()); }
+            inline int64_t get_number_int() const { return is_double()?static_cast<int64_t>(std::get<double>(data)):is_int()?std::get<int64_t>(data):throw JSON_Exception("Number",type_name()); }
             inline double get_number_double() const { return is_double()?std::get<double>(data):is_int()?static_cast<double>(std::get<int64_t>(data)):throw JSON_Exception("Number",type_name()); }
             
             inline std::string& get_str(){ return is_str()?std::get<std::string>(data):throw JSON_Exception("String",type_name()); }
